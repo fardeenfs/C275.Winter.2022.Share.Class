@@ -1,2 +1,5 @@
 helloworld:
-	g++ -Wall -o helloworld first.c
+	g++ -Wall -o helloworld first.cpp second.cpp
+
+clean:
+	rm -f helloworld *.o *.out
