@@ -5,7 +5,15 @@ void swap(double &, double &);
 void pow(int *, int);
 void zero_out(int);
 
-int main() {
+int main(int argc, char *argv[]) 
+{
+	cout << "The number of command-line args: " << argc << endl;
+	for (int i=argc; i>0; i--) 
+	{
+		cout << "Argument #" << argc - i << " is: ";
+		cout << argv[argc - i] << endl;
+	}
+
 	const int arr_size = 5;
 	int numbers[arr_size] = {-2, 5, 0, 8, 1};
 	double first_var = 1, second_var = -1;
@@ -20,20 +28,23 @@ int main() {
 	return 0;
 }
 
-void zero_out(int var) {
+void zero_out(int var) 
+{
 	var = 0;
 	// what if we return var?
 }
 
-void swap(double &var1, double &var2) {
+void swap(double &var1, double &var2) 
+{
 	double tmp;
 	tmp = var1;
 	var1 = var2;
 	var2 = tmp;
 }
 
-void pow(int *arr, int len) { 
-// what if we change the type of arr to "const int *"?
+void pow(int *arr, int len) 
+{ 
+	// what if we change the type of arr to "const int *"?
 	for (int i=0; i<len; i++)
 		*(arr+i) *= *(arr+i);
 }
