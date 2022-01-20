@@ -15,9 +15,17 @@
 #include <iostream>
 using namespace std;
 
-// int main(int argc, char** argv[]) {
+// In C++/C:
+//    "string"	--> char name[40];
+//		--> char * name;   name = new char[40]
+// int main(int argc, char** argv) {
 
 int main(int argc, char* argv[]) {
+	char * name;
+	name = new char[40];
+	name[0] = 'X';
+	name[1] = '\0';
+
 	cout << "Number of parameters: " << argc << endl;
 
 	// now print out each parameter
