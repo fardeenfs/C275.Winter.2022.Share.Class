@@ -12,5 +12,9 @@ quick_select.o: quick_select.cpp quick_select.h
 quick_select_test.o: quick_select_test.cpp quick_select.h
 	$(CC) quick_select_test.cpp -o quick_select_test.o -c $(CFLAGS)
 
+pt: quick_select_pythontutor.cpp
+	$(CC) $(CFLAGS) -g quick_select_pythontutor.cpp -o pt
+
+
 clean:
 	@rm -f $(OBJS) $(PROJECT)
