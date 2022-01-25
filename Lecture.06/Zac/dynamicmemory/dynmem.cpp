@@ -9,7 +9,7 @@ int main() {
 
   int *array = new int[n];
   int *second = array; // Paul
-  cout << second << endl; // Paul
+  cout << second << endl; // Paul (suppress g++ warning)
 
   cout << "We got it!" << endl;
 
