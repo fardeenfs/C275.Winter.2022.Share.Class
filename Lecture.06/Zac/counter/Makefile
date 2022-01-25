@@ -1,6 +1,6 @@
 CC=g++
 LFLAGS=
-CFLAGS=-Wall -O2 -c
+CFLAGS=-Wall -O -c -g
 PROG=testcounter
 OBJS=testcounter.o counter.o
 
