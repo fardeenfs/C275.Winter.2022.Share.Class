@@ -8,6 +8,8 @@ int main() {
   cin >> n;
 
   int *array = new int[n];
+  int *second = array; // Paul
+  cout << second << endl; // Paul
 
   cout << "We got it!" << endl;
 
