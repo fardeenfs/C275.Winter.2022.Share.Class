@@ -83,8 +83,8 @@ int main() {
   cout << a/b << endl;
   cout << -a << endl;
 
-  cin >> a >> b;
-  cout << a+b << endl;
+  // cin >> a >> b;
+  // cout << a+b << endl;
 
   return 0;
 }

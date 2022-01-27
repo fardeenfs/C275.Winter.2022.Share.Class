@@ -100,8 +100,8 @@ int main() {
   cout << a/b << endl;
   cout << -a << endl;
 
-  cin >> a >> b;
-  cout << a+b << endl;
+  // cin >> a >> b;
+  // cout << a+b << endl;
 
   Complex<int> c(1, 2), d(3, 4);
   cout << c+d << endl << c*d << endl;
