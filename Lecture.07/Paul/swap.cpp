@@ -7,8 +7,8 @@ using namespace std;
 template <typename T>
 void swapItems(T& arg1, T& arg2) {
 	T arg3 = arg1;
-  arg1 = arg2;
-  arg2 = arg3;
+	arg1 = arg2;
+	arg2 = arg3;
 }
 
 short int GX = 0, GY = 100;
@@ -30,17 +30,17 @@ C++:
   b = a;
   a = x;
 */
-  swapItems(a,b);
-  swapItems(c,d);
-  swapItems(GX,GY);
+	swapItems(a,b);
+	swapItems(c,d);
+	swapItems(GX,GY);
 
-  string k = "there";
-  string l = "hello";
-  swapItems(k,l);
+	string k = "there";
+	string l = "hello";
+	swapItems(k,l);
 
 
 	cout << a << ' ' << b << endl;
 	cout << GX << ' ' << GY << endl;
 	cout << c << ' ' << d << endl;
-  cout << k << ' ' << l << endl;
+	cout << k << ' ' << l << endl;
 }
