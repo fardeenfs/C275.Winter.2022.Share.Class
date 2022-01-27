@@ -1,4 +1,4 @@
-// Based on Zac
+// Based on Zac Friggstad example
 #include <iostream>
 #include <string>
 
@@ -13,10 +13,16 @@ void swapItems(T& arg1, T& arg2) {
 
 int main() {
 	int a = 4, b = 0;
-	// int a = 4, b = 0, x = -1;
 	float c = 4.1, d = 0.1;
 
 /*
+Python:
+a = 4
+b = 0
+b,a = a,b
+print(a,b)
+
+	int a = 4, b = 0, x = -1;
   x = b;
   b = a;
   a = x;
