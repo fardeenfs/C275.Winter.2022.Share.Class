@@ -6,3 +6,4 @@ dt: dynarraytest.cpp dynarray.h
 
 clean:
 	-rm dt
+	-rm *.o
