@@ -21,7 +21,7 @@ int main() {
   // using a C++11 range-based for loop
   // OBSERVE: the order they are printed does not correspond to
   // the order they were inserted
-  for (auto items : my_dict) {
+  for (auto items : my_dict) { 	// Python:  for i in my_list:
     cout << items.first << ": " << items.second << endl;
   }
   cout << endl;

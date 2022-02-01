@@ -6,3 +6,4 @@ um: unordered_map.cpp
 
 clean:
 	-rm um
+	-rm *.o
