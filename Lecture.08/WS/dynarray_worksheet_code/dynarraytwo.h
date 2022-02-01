@@ -1,3 +1,4 @@
+// NOTE: make sure you change dynarraytesttwo to include the solution
 #ifndef _DYNARRAY_H_
 #define _DYNARRAY_H_
 
@@ -41,7 +42,7 @@ public:
   // this is what you will implement in exercise 4
   T popBack();
 
-  // this is what you will implement in exercise 6
+  // this is what you will implement in exercise 5
   int find(const T& item);
 
 private:
@@ -123,18 +124,8 @@ unsigned int DynamicArray<T>::size() const {
 
 template <typename T>
 void DynamicArray<T>::pushBack(const T& item) {
-  // if the dynamic array is already full, resize it
-  if (numItems == arraySize) {
-    // resize to get enough space for more items
-    resize(numItems+1);
-    // but we haven't actually put the new item in yet
-    numItems--;
-  }
-
-  // either way, we now have space to add the item
-  // to the end of the user's array
-  array[numItems] = item;
-  numItems++;
+  // we can rewrite this to call the more general insert() method
+  insert(numItems, item);
 }
 
 template <typename T>
@@ -147,48 +138,91 @@ T& DynamicArray<T>::operator[](unsigned int index) {
 template <typename T>
 void DynamicArray<T>::insert(unsigned int index, const T& item) {
   // first thing we want to do is make sure we have a valid index
+  // you should allow inserting "after" the last item as well
 
+  assert(index <= numItems);
   // next, we should ensure there is actually room for our array to hold another item
-
-  // remember that after resizing we still haven't added the new item yet
+  if (numItems == arraySize) {
+    resize(numItems+1);
+    // remember that after resizing we still haven't added the new item yet
+    numItems--;
+  }
 
   // next we want to shift everything in our array one item to the right
+  for (int i = numItems; i >= index; i--) {
+    array[i] = array[i-1];
+  }
 
   // finally, we can add our new element
-
+  array[index] = item;
+  numItems++;
 }
 
 // EXERCISE 3: Finish implementing the following
 template <typename T>
 void DynamicArray<T>::erase(unsigned int index) {
   // first lets make sure the index they gave us is in range of our array
+  assert(index < numItems);
 
   // now that we know we are able to get rid of an item, we just have to shift everything left and overwrite the old values
+  for (int i = index; i < numItems - 1; i++) {
+    array[i] = array[i+1];
+  }
 
   // finally we can reduce the number of items
+  numItems--;
+
+  // check to see if the user's array is much smaller than the array in the heap
+  if (numItems < arraySize && arraySize > 10) {
+    resize(numItems);
+  }
 }
 
 // EXERCISE 4: Finish implementing the following
 template <typename T>
 T DynamicArray<T>::popBack() {
   // first thing we want to do is ensure there are actually items in the array
-
+  assert(numItems > 0);
   // we should copy the item we want so that it can be returned
+  T item = array[numItems - 1];
 
   // new get rid of the item: can you reuse any code?
+  erase(numItems - 1);
 
   // finally, return the item that you created before
+  return item;
 }
 
-// EXERCISE 5: Finish implementing the following
+// EXERCISE 6: Finish implementing the following
 template <typename T>
 int DynamicArray<T>::find(const T& item) {
   // lets first just look for the item in the array
-
-  // if we find it, then we should return that index
-
+  for (int i = 0; i < numItems; i++) {
+    // if we find it, then we should return that index
+    if (item == array[i]) {
+      return i;
+    }
+  }
   // if we haven't found it, we should return -1
+  return -1;
 }
+
+
+/*
+  Exercise 1 solutions
+  1. A dynamic array is one that can be resized automatically to hold more or less items
+  2. The size of our dynamic array is not fixed, it will grow or shrink as needed
+  3. You can add items to the end, find the size of it, change the size of it, and retrieve values from it
+  4. first it ensures there is room for a new item. If there isn't then it creates some. Next it adds the item to the end.
+  5. Because we are using operator overloading.
+  6. Part of our dynamic array stores a variable that keeps track of how many items are in it. The function just returns this value
+*/
+
+/*
+  Exercise 5 solutions
+  Look how the erase() method will reallocate space if the user's array size shrinks
+  to < 1/4 of the array size in the heap (unless the array size is already 10).
+*/
 
 
 #endif

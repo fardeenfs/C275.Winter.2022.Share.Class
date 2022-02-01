@@ -66,7 +66,7 @@ int main() {
   cout << "findValue for 103: " << findValue <<  endl;
   dumpArray(a);
 
-  // findValue for 6 is 3, findValue for 103 is 8
+  // findValue for 6 is 3, findValue for 103 is -1
 
 
   return 0;
