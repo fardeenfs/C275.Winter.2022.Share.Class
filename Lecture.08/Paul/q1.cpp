@@ -7,7 +7,7 @@ public :
 		array = new int[size];
 	}
 	~IntArray () {
-		std::cout << "HERE" << std::endl;
+		std::cout << "HERE" << std::endl;	// Debugging output
 		delete[] array;
 	}
 	int& operator[](unsigned int index) {
@@ -20,7 +20,7 @@ private :
 
 int main() {
 	IntArray a(10), b(20);
-	std::cout << std::endl;
+	std::cout << std::endl;		// Easy line to set a breakpoint
 	b = a;
-	std::cout << std::endl;
+	std::cout << std::endl;		// Easy line to set a breakpoint
 };
