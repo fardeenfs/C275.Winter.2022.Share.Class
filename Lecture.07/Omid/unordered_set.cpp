@@ -71,7 +71,7 @@ int main() {
 
   // deletes all elements of the unordered_set
   // the size of the container will be zero
-  cout << "Deletingg all elements" << endl;
+  cout << "Deleting all elements" << endl;
   my_set.clear();
   cout << "Number of elements: " << my_set.size() << endl;
 
