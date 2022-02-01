@@ -7,6 +7,7 @@ public :
 		array = new int[size];
 	}
 	~IntArray () {
+		std::cout << "HERE" << std::endl;
 		delete[] array;
 	}
 	int& operator[](unsigned int index) {
