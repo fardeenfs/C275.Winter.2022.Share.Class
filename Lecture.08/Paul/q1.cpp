@@ -19,6 +19,7 @@ private :
 
 int main() {
 	IntArray a(10), b(20);
+	std::cout << std::endl;
 	b = a;
 	std::cout << std::endl;
 };
