@@ -66,11 +66,11 @@ DynamicArray<T>::DynamicArray(const DynamicArray& copy) {
   // was not initialized at all
   // FURTHER STUDY FOR THE CURIOUS: constructor delegation
   array = NULL;
-  resize(numItems);
+  resize(copy.numItems); // BUG:  resize(numItems);
 
   // now the array has the proper size, so just copy the contents of the other
   // array into this array
-  for (unsigned int i = 0; i < numItems; i++) {
+  for (unsigned int i = 0; i < copy.numItems; i++) { // BUG: for (unsigned int i = 0; i < numItems; i++) {
     array[i] = copy.array[i];
   }
 }
