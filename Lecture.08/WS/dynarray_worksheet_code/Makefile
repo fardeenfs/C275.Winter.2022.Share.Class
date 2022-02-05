@@ -1,7 +1,7 @@
 CC = g++
 C_FLAGS = -std=c++11 -Wall -g
 
-da: dynarraytesttwo.cpp
+da: dynarraytesttwo.cpp dynarraytwo.h
 	$(CC) $(C_FLAGS) dynarraytesttwo.cpp -o da
 
 clean:
