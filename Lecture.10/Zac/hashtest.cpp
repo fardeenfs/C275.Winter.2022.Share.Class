@@ -36,7 +36,7 @@ void printHashTable(const HashTable<StudentRecord>& table) {
   DynamicArray<StudentRecord> array = table.getItemsArray();
 
   cout << "Table size: " << table.size() << endl;
-  for (int i = 0; i < array.size(); i++) {
+  for (unsigned int i = 0; i < array.size(); i++) {
     cout << setw(20) << left << array[i].name
          << setw(7) << array[i].id
          << setw(3) << array[i].grade << endl;
