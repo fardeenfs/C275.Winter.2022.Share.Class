@@ -167,7 +167,7 @@ DynamicArray<T> HashTable<T>::getItemsArray() const {
   DynamicArray<T> array;
 
   // go through each bucket
-  for (int i = 0; i < tableSize; i++) {
+  for (unsigned int i = 0; i < tableSize; i++) {
     // and crawl along the list in the bucket to add the items to the array
     ListNode<T>* node = table[i].getFirst();
     while (node != NULL) {
