@@ -1,5 +1,7 @@
 
 /*
+  *** NOTE:  Missing getBucketCount() (2022) -- Paul Lu
+
   A hash table for storing items. It is assumed the type T of the item
   being stored has a hash method, eg. you can call item.hash(), which
   returns an unsigned integer.
