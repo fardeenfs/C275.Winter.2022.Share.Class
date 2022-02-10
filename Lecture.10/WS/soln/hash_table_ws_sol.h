@@ -1,7 +1,12 @@
+
 /*
+  *** NOTE:  Missing getBucketCount() (2022) -- Paul Lu
+
   A hash table for storing items. It is assumed the type T of the item
   being stored has a hash method, eg. you can call item.hash(), which
   returns an unsigned integer.
+
+  Includes the solutions for the hash_table worksheet!
 
   Think: the hash table is like a python set.
 
@@ -46,12 +51,19 @@ public:
   // Returns the number of items in the hash table.
   unsigned int size() const;
 
-  // Returns the number of buckets in the hash table.
-  unsigned int getBucketCount() const;
-
   // Returns a dynamic array containing the items in the hash table
   // (in no particular order).
   DynamicArray<T> getItemsArray() const;
+
+  // Clears the table (but keeps the same # of buckets)
+  void clear();
+
+  // Returns the maximum bucket size.
+  unsigned int getMaxLoad() const;
+
+  // If there is an entry in the hash table that is equivalent to "item",
+  // this will replace it "item". Otherwise, it just adds "item" to the table.
+  void update(const T& item);
 
 private:
   LinkedList<T> *table; // start of the array of linked lists (buckets)
@@ -110,8 +122,6 @@ HashTable<T>& HashTable<T>::operator=(const HashTable<T>& rhs) {
     // a copy of each list in the rhs
     table[i] = rhs.table[i];
   }
-
-  return *this;
 }
 
 template <typename T>
@@ -158,16 +168,11 @@ unsigned int HashTable<T>::size() const {
 }
 
 template <typename T>
-unsigned int HashTable<T>::getBucketCount() const {
-  return tableSize;
-}
-
-template <typename T>
 DynamicArray<T> HashTable<T>::getItemsArray() const {
   DynamicArray<T> array;
 
   // go through each bucket
-  for (unsigned int i = 0; i < tableSize; i++) {
+  for (int i = 0; i < tableSize; i++) {
     // and crawl along the list in the bucket to add the items to the array
     ListNode<T>* node = table[i].getFirst();
     while (node != NULL) {
@@ -186,6 +191,40 @@ unsigned int HashTable<T>::getBucket(const T& item) const {
   return item.hash() % tableSize;
 }
 
+
+
+template <typename T>
+void HashTable<T>::clear() {
+  // simply call the clear method for each list
+  for (int i = 0; i < tableSize; i++) {
+    table[i].clear();
+  }
+
+  numItems = 0;
+}
+
+template <typename T>
+unsigned int HashTable<T>::getMaxLoad() const {
+  unsigned int maxLoad = 0;
+
+  for (int i = 0; i < tableSize; i++) {
+    if (table[i].size() > maxLoad) {
+      maxLoad = table[i].size();
+    }
+  }
+
+  return maxLoad;
+}
+
+template <typename T>
+void HashTable<T>::update(const T& item) {
+  // This will remove the equivalent item (if it existed).
+  if (contains(item)) {
+    remove(item);
+  }
+
+  insert(item);
+}
 
 
 #endif

@@ -1,7 +1,9 @@
+// Contains tests for the worksheet solution.
+
 #include <iostream>
 #include <iomanip>
 #include <cassert>
-#include "hash_table.h"
+#include "hash_table_ws_sol.h"
 
 using namespace std;
 
@@ -26,7 +28,6 @@ unsigned int StudentRecord::hash() const {
   return id;
 }
 
-
 bool StudentRecord::operator!=(const StudentRecord& rhs) const {
   return id != rhs.id;
 }
@@ -36,7 +37,7 @@ void printHashTable(const HashTable<StudentRecord>& table) {
   DynamicArray<StudentRecord> array = table.getItemsArray();
 
   cout << "Table size: " << table.size() << endl;
-  for (unsigned int i = 0; i < array.size(); i++) {
+  for (int i = 0; i < array.size(); i++) {
     cout << setw(20) << left << array[i].name
          << setw(7) << array[i].id
          << setw(3) << array[i].grade << endl;
@@ -91,12 +92,17 @@ int main() {
   StudentRecord newSiri = {"Siri", 55545, 75};
   // this actually removes the old entry with Siri (i.e. the one with the
   // matching student ID)
-  table.remove(newSiri);
-  table.insert(newSiri);
+  table.update(newSiri);
   // notice Siri and Zac print in a different order this time,
   // so there really is no natural "ordering" to the entries
   printHashTable(table);
   cout << endl;
+
+  cout << "Maximum load: " << table.getMaxLoad() << endl << endl;
+
+  cout << "Clearing table" << endl;
+  table.clear();
+  printHashTable(table);
 
   return 0;
 }
