@@ -11,7 +11,7 @@ class Account {
 public:
    Account();
    Account(string acc_holder, double opening);
-   virtual ~Account();
+   ~Account();
    virtual void withdraw(double amt);
    double getbalance();
    static int count;
