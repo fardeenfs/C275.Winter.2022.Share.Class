@@ -19,7 +19,23 @@ int main() {
   char current;
   int idx;
 
-// Complete code here
+  while(1){
+    idx = 0;
+    while(1){
+      read(fd, &current, 1);
+      if( current == '\n' ){
+        break;
+      }
+      msg[idx++] = current;
+    }
+    msg[idx] = '\0';
+    cout << "-----"  << endl;
+    cout << msg << endl;
+    cout << "-----"  << endl;
+    if( strcmp(msg, "quit") == 0 ){
+      break;
+    }
+  }
 
   // close pipe from the write end 
   close(fd);
