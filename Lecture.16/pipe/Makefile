@@ -19,8 +19,11 @@ r2: multiline_reader.cpp
 w2: multiline_writer.cpp
 	$(CC) $(C_FLAGS) multiline_writer.cpp -o w2
 
+reset:
+	-rm pipe*
+
 clean:
 	-rm r1 w1
 	-rm r2 w2
-	-rm pipe*
+	make reset
 	-rm *.o
