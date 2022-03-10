@@ -2,20 +2,20 @@ CC = g++
 C_FLAGS = -std=c++11 -Wall -g
 
 all:
-	make sfl
-	make rfl
+	make sdelim
+	make rdelim
 
-sfl: sender-fl.cpp
-	$(CC) $(C_FLAGS) sender-fl.cpp -o sfl
+sdelim: sender-delim.cpp
+	$(CC) $(C_FLAGS) sender-delim.cpp -o sdelim
 
-rfl: receiver-fl.cpp
-	$(CC) $(C_FLAGS) receiver-fl.cpp -o rfl
+rdelim: receiver-delim.cpp
+	$(CC) $(C_FLAGS) receiver-delim.cpp -o rdelim
 
 reset:
 	-rm sharedch*
 
 clean:
-	-rm r1 sfl
-	-rm r2 rfl
+	-rm r1 sdelim
+	-rm r2 rdelim
 	make reset
 	-rm *.o
