@@ -24,9 +24,10 @@ int main() {
 
   while(true){
     memset(msg, 0, _MSG_MAX_LENGTH);
-
-    // finish code here
-
+    // FIXME:  Check return values for read() and others
+    read(fd, &h, sizeof(h));   // header
+    read(fd, msg, h.len);      // payload
+    cout << msg << endl;
     if( strcmp(msg, "quit") == 0 ){
       break;
     }
