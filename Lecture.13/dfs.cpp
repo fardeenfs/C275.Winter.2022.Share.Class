@@ -19,8 +19,6 @@ void recursive_dfs(const Digraph& graph, const int u, const int prev, unordered_
 }
 
 void dfs(const Digraph& graph, const int start, unordered_set<int> & reached) {
-	reached.insert(start);
-
 	stack<int> unexplored;
 	unexplored.push(start);
 
