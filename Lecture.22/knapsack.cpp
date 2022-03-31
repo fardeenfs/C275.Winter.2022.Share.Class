@@ -58,6 +58,31 @@ int knapsack(const int *values, const int *weights, int n,
 	return memo[mpair];
 }
 
+// returns the max total value for a subset of the n items
+// that fit in the knapsack (i.e., their total weight <= c)
+int knapsack_bu(const int *values, const int *weights, int n, int c) {
+	int table[n+1][c+1]; // initialize to zero
+	// table[i][j] is the max value that can be obtained by
+	// packing the first i items in a knapsack with capacity j
+
+
+	for (int i=0; i<=n; ++i) {
+		for (int j=0; j<=c; ++j) {
+			if (i == 0 || j == 0) { // base case
+				table[i][j] = 0;
+				continue;
+			}
+
+			if (j < weights[i-1])
+				table[i][j] = table[i-1][j];
+			else
+				table[i][j] = max(table[i-1][j], values[i-1]+table[i-1][j-weights[i-1]]);
+		}
+	}
+
+	return table[n][c];
+}
+
 int main() {
 	int nitems, capacity; 
 	cout << "Enter the number of items: ";
@@ -81,8 +106,8 @@ int main() {
 	int total = knapsack(values, weights, nitems, capacity, cache);
 	cout << "max total value of the items in your knapsack: " << total << endl;
 
-	// total = knapsack_bu(values, weights, nitems, capacity);
-	// cout << "max total value of the items in your knapsack: " << total << endl;
+	total = knapsack_bu(values, weights, nitems, capacity);
+	cout << "max total value of the items in your knapsack: " << total << endl;
 
 	delete [] values;
 	delete [] weights;
